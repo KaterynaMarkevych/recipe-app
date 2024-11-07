@@ -1,7 +1,9 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect} from 'react';
 import styled from "styled-components";
 import 'primeicons/primeicons.css';
 import logo from "../assets/logo.svg";
+import MobileLogInForm from './MobileLogInForm';
+import RegistrationForm from './RegistrationForm';
 
 const HeaderContainer = styled.header`
     display: flex;
@@ -129,7 +131,7 @@ const LogInButton = styled.button`
   border-radius: 15px;
   border: 1px solid #000;
   background: #D6E6F2;
-  position: fixed;
+  position: absolute;
   top: 30px;
   left: 1200px;
   text-align: center;
@@ -208,10 +210,167 @@ const Overlay = styled.div`
   height: 100%;
   background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(5px);
-  z-index: 2;
+  z-inex: 4;
 `;
+const LoginForm = styled.div`
+  display: ${props => (props.show ? 'flex' : 'none')};
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 690px;
+  height: 458px;
+  padding: 20px;
+  background: #D6E6F2;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  z-index: 8;
+  flex-direction: column;
+  align-items: center;
+  @media (max-width: 768px) {
+  display: none;
+  }
+`;
+const LogInFormHeader = styled.h2`
+  color: #2B3A39;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  margin-bottom: 44px;
+`;
+const LogInInput = styled.input`
+  width: 344px;
+  height: 46px;
+  flex-shrink: 0;
+  border: 1px solid #A6A4A4;
+  background: #F7FBFC;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 20px;
+  align-items: left;
+  padding-left: 60px; 
+  &:focus {
+    outline: none;
+    border-color: #A6A4A4;
+  }
+`;
+const LogInIcon = styled.i`
+  position: absolute;
+  left: 23px;
+  font-size: 18px;
+  color: #A6A4A4;
+`;
+const LogInFormButton = styled.button`
+  width: 154px;
+  height: 54px;
+  border-radius: 14px;
+  border: 1px solid #000;
+  background: #B9D7EA;
+  font-size: 24px;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  &:hover {
+    background: #B9D7EA;
+    border: 1px solid #000;
+  }
+  &:focus {
+    outline: none;
+  }
+  &:active {
+    border: none; 
+  }
+`;
+const ForgetPasswordButton = styled.button`
+  position: fixed;
+  top: 345px;
+  align-items: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 20px;
+   &:hover {
+    border: none;
+  }
+  &:focus {
+    outline: none;
+  }
+  &:active {
+    border: none; 
+  }
+`;
+const RegistrationButton = styled.button`
+  position: fixed;
+  top: 400px;
+  align-items: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 20px;
+  text-color: #2B3A39;
+  &:hover {
+    border: none;
+  }
+  &:focus {
+    outline: none;
+  }
+  &:active {
+    border: none; 
+  }
+`;
+const LogInInputContainer = styled.div`
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 34px;
+`;
+const BackIcon = styled.i`
+  position: absolute;
+  top: 34px;
+  left: 44px;
+  font-size: 24px;
+  color: #A6A4A4;
+  cursor: pointer;
+`;
+const CloseFormIcon = styled.i`
+  position: fixed;
+  top: 38px;
+  right: 50px;
+  font-size: 24px;
+  color: #A6A4A4;
+  cursor: pointer;
+`;
+const OverlayForForm = styled.div`
+  display: ${props => (props.show ? 'block' : 'none')};
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  z-index: 7;
+`;
+
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showLoginForm, setShowLoginForm] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [showRegistrationForm, setShowRegistrationForm] = useState(false); 
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
     return (
       <>
         <HeaderContainer>
@@ -241,12 +400,41 @@ const Header = () => {
             </List>
           </Navigation>
 
-          <LogInButton>Увійти</LogInButton>
+          <LogInButton onClick={()=>setShowLoginForm(true)}>Увійти</LogInButton>
           <AddRecipeButton>Додати рецепт</AddRecipeButton>
         </HeaderContainer>
+        
+        {showLoginForm && (
+          isMobile ? (
+            <MobileLogInForm show={showLoginForm} onClose={() => setShowLoginForm(false)} />
+          ) : (
+            <LoginForm show={showLoginForm}>
+              <BackIcon className='pi pi-arrow-left' onClick={() => setShowLoginForm(false)}></BackIcon>
+              <CloseFormIcon className='pi pi-times' onClick={() => setShowLoginForm(false)}></CloseFormIcon>
+              <LogInFormHeader>Увійти</LogInFormHeader>
+              <LogInInputContainer>
+                <LogInIcon className="pi pi-envelope" />
+                <LogInInput type="text" placeholder="Email" />
+              </LogInInputContainer>
+              <LogInInputContainer>
+                <LogInIcon className="pi pi-lock" />
+                <LogInInput type="password" placeholder="Пароль" />
+              </LogInInputContainer>
+              <LogInFormButton>Увійти</LogInFormButton>
+              <ForgetPasswordButton>Забули пароль?</ForgetPasswordButton>
+              <RegistrationButton onClick={() => setShowRegistrationForm(true)}>Зареєструватися</RegistrationButton>
+            </LoginForm>
+          )
+        )}
+        <RegistrationForm show={showRegistrationForm} onClose={() => setShowRegistrationForm(false)} />
+
         <Overlay show={menuOpen} onClick={() => setMenuOpen(false)} />
-      </>
-    )
+        <OverlayForForm show={showLoginForm || showRegistrationForm} onClick={() => {
+        setShowLoginForm(false);
+        setShowRegistrationForm(false);
+      }} />
+    </>
+    );
   }
   
   export default Header
