@@ -5,6 +5,7 @@ import logo from "../assets/logo.svg";
 import MobileLogInForm from './MobileLogInForm';
 import RegistrationForm from './RegistrationForm';
 
+
 const HeaderContainer = styled.header`
     display: flex;
     text-align: center;
@@ -210,7 +211,7 @@ const Overlay = styled.div`
   height: 100%;
   background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(5px);
-  z-inex: 4;
+  z-inex: 10;
 `;
 const LoginForm = styled.div`
   display: ${props => (props.show ? 'flex' : 'none')};
@@ -429,10 +430,7 @@ const Header = () => {
         <RegistrationForm show={showRegistrationForm} onClose={() => setShowRegistrationForm(false)} />
 
         <Overlay show={menuOpen} onClick={() => setMenuOpen(false)} />
-        <OverlayForForm show={showLoginForm || showRegistrationForm} onClick={() => {
-        setShowLoginForm(false);
-        setShowRegistrationForm(false);
-      }} />
+        <OverlayForForm show={showLoginForm || showRegistrationForm} onClick={() => {setShowLoginForm(false);setShowRegistrationForm(false);}} />
     </>
     );
   }
