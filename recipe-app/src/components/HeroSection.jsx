@@ -7,9 +7,14 @@ import photo4 from "../assets/picture4.svg";
 import mobilephoto from "../assets/heromobile.svg";
 
 const HeroSectionContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    width: 100%;
-    padding-top: 200px;
+    max-width: 100%; 
+    margin: 0 auto;
+    margin-top: 250px;
+    padding: 0 20px;
     @media (max-width: 768px){
         width: 340px;
     }
@@ -130,7 +135,7 @@ const MobilePhoto = styled.img`
 `;
 const Line = styled.line`
     display: block;  
-    width: 1222px;
+    width: 100%;
     height: 1px;
     background: #A6A4A4;
     margin: 40px auto;

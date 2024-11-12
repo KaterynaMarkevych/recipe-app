@@ -16,17 +16,17 @@ const HeaderContainer = styled.header`
     right:0;
     left:0;
     background: #8CAABE;
-    height: 148px;
+    height: ${props => (props.scrolled ? "74px" : "148px")};
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     cursor: pointer;
     z-index: 3;
 `;
 const Logo = styled.img`
-  width: 123.311px;
-  height: 82.905px;
+  width: 124px;
+  height: 84px;
   position: fixed;
-  top: 54px;
   left: 74px;
+  top: ${props => (props.scrolled ? "24px" : "54px")};
   @media (max-width: 768px) {
     position: relative;
     top: -20px;
@@ -74,15 +74,14 @@ const SearchIcon = styled.i`
   }
 `;
 const Navigation = styled.nav`
-display: none;
-  @media (min-width: 768px) {
+    display: flex; 
     position: fixed;
     left: 268px;
     top: 114px;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
+  
   @media (max-width: 768px) {
     display: ${props => (props.showMenu ? 'flex' : 'none')};
     flex-direction: column;
@@ -100,7 +99,7 @@ display: none;
 const List = styled.ul`
   list-style-type: none;
   padding: 0;
-  display: flex;
+  display: ${props => (props.scrolled ? "none" : "flex")};
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: flex-start; 
@@ -367,22 +366,32 @@ const Header = () => {
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [showRegistrationForm, setShowRegistrationForm] = useState(false); 
+  const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50); // встановлюємо значення true, якщо скрол більше 50px
+    };
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
     return (
       <>
-        <HeaderContainer>
-        <Logo src={logo} alt="EasyIngrecipes" onClick={() => window.location.href = '/home'} />
+        <HeaderContainer scrolled={scrolled}>
+        <Logo src={logo} alt="EasyIngrecipes" onClick={() => window.location.href = '/home'}  scrolled={scrolled}/>
         <SearchField placeholder="Пошук рецепту" />
         <SearchIcon className="pi pi-search" />
         <BurgerMenu onClick={() => setMenuOpen(!menuOpen)} className="pi pi-bars" />
 
-          <Navigation showMenu={menuOpen}>
+          <Navigation showMenu={menuOpen} scrolled={scrolled}>
           <CloseIcon onClick={() => setMenuOpen(false)} className="pi pi-times" />
-            <List>
+            <List scrolled={scrolled}>
               <ListIteam>
                 <Link href="/national_cuisine">Національна кухня</Link>
               </ListIteam>
