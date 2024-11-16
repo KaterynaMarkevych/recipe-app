@@ -1,6 +1,7 @@
 // src/components/RecipeCard.jsx
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 const Card = styled.div`
   width: 230px;
@@ -58,12 +59,23 @@ const RecipeCard = ({ recipe }) => {
         }
         return stars.join(" ");
       };
+      const navigate = useNavigate();
+
+      const handleClick = () => {
+        navigate(`/recipe/${recipe.id}`);
+      };
+      
+      const formatIngredients = (ingredients) => {
+        return ingredients.slice(0, 6).map((ingredient) =>
+          ingredient.replace(/^\d*\s*(шт\.?|г|кг|л|мл|ст\.л|ч\.л|додати|паст[аи]|см\.|капсула|таблетка|упаковка|щіпка)?\s*/i, "").trim()
+        ).join(", ");
+    };
     return (
     <>
-        <Card>
+        <Card onClick={handleClick}>
             <Image src={recipe.image} alt={recipe.title}/>
             <Title> {recipe.name}</Title>
-            <Ingredients>{recipe.ingredients.join(", ")}</Ingredients>
+            <Ingredients>{formatIngredients(recipe.ingredients)}</Ingredients>
             <Stars>{renderStars(recipe.rating)}</Stars>
         </Card>
     </>
