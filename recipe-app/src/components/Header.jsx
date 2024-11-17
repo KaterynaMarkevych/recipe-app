@@ -4,6 +4,7 @@ import 'primeicons/primeicons.css';
 import logo from "../assets/logo.svg";
 import MobileLogInForm from './MobileLogInForm';
 import RegistrationForm from './RegistrationForm';
+import { useNavigate } from 'react-router-dom';
 
 
 const HeaderContainer = styled.header`
@@ -380,7 +381,12 @@ const Header = () => {
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+    }, []);
+    
+    const navigate = useNavigate();
+    const handleAddRecipe = () => {  
+      navigate('/add-recipe'); // Перехід на сторінку додавання рецепта
+    };
     return (
       <>
         <HeaderContainer scrolled={scrolled}>
@@ -411,7 +417,7 @@ const Header = () => {
           </Navigation>
 
           <LogInButton onClick={()=>setShowLoginForm(true)}>Увійти</LogInButton>
-          <AddRecipeButton>Додати рецепт</AddRecipeButton>
+          <AddRecipeButton onClick={handleAddRecipe}>Додати рецепт</AddRecipeButton>
         </HeaderContainer>
         
         {showLoginForm && (
