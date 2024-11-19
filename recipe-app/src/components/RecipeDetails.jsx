@@ -12,29 +12,30 @@ import PhotoSection from './RecipeDetailComponents/PhotoSection';
 import CommentsSection from './RecipeDetailComponents/CommentsSection';
 
 const DetailContainer = styled.div`
-  width: 100%;
-  max-width: 1220px;
-  margin: 0 auto;
-  display: flex; /* Включаємо Flexbox */
-  flex-direction: column; /* Якщо елементи мають бути в стовпчик, можна змінити на row для рядка */
-  justify-content: center; /* Центрування по вертикалі */
-  align-items: center;
+    width: 100%;
+    max-width: 1220px;
+    margin: 0 auto;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
 `;
 
 const RecipeDetails = () => {
-  const { id } = useParams();
+  const { id, recipeId } = useParams(); 
+  const recipeIdentifier = id || recipeId;
   const [recipe, setRecipe] = useState(null);
 
   useEffect(() => {
     const fetchRecipe = () => {
-      const foundRecipe = mockRecipes.find((recipe) => recipe.id === id);
+      const foundRecipe = mockRecipes.find((recipe) => recipe.id === recipeIdentifier);
       setRecipe(foundRecipe);
     };
   
-    if (id) {
+    if (recipeIdentifier) {
       fetchRecipe();
     }
-  }, [id]);
+  }, [recipeIdentifier]);
 
   if (!recipe) {
     return <DetailContainer>Завантаження...</DetailContainer>;

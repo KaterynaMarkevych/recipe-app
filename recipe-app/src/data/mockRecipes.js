@@ -1,7 +1,7 @@
 import image1 from "../assets/popular_recipe1.svg";
 import image2 from "../assets/popular_recipe2.jpg";
 import image3 from "../assets/popular_recipe3.jpg";
-import userphoto101 from '../assets/Ellipse.svg';
+import userphoto101 from '../assets/picture1.svg';
 const recipes = [
   {
     id: "recipe1",
@@ -46,12 +46,12 @@ const recipes = [
     user: [
       {
         id: 101,
-      name: "Diana Nelson",
-      profilePhoto: "/images/user101.jpg",
-      bio: "Люблю готувати здорову їжу та експериментувати з інгредієнтами.",
-      followers: 245,
-      following: 180,
-      recipesCount: 30,
+        name: "Diana Nelson",
+        profilePhoto: userphoto101,
+        bio: "Люблю готувати здорову їжу та експериментувати з інгредієнтами.",
+        followers: 245,
+        following: 180,
+        recipesCount: 30,
       },
     ]
   },
@@ -94,13 +94,12 @@ const recipes = [
     ],
     user: [
       {
-      id: "user2",
+      id: 102,
       name: "Андрій Петров",
       bio: "Традиційні рецепти з душею. Знаю всі секрети ідеального борщу.",
       followers: 530,
       following: 250,
       recipesCount: 45,
-      recipes: ["recipe2", "recipe4", "recipe8"],
       profilePhoto: "/images/user2.jpg",}
     ]
     
@@ -142,7 +141,17 @@ const recipes = [
       "Сформуйте вареники з начинкою.",
       "Зваріть вареники у підсоленій воді до готовності."
     ],
-    authorId: "user1",
+    user: [
+      {
+        id: 103,
+        name: "Марія Коваленко",
+        profilePhoto: "/images/user103.jpg",
+        bio: "Подорожую світом через кулінарію. Особливий акцент на азійській кухні.",
+        followers: 320,
+        following: 200,
+        recipesCount: 35,
+    }
+  ]
   },
   {
     id: "recipe4",
@@ -151,6 +160,24 @@ const recipes = [
     ingredients: ['картопля', 'морква', 'огірок', 'горошок', 'ковбаса'],
     rating: 4.6,
     description: 'Класичний новорічний салат Олів’є.',
+    cuisine_type: {
+      diet: {
+          glutenfree: true,
+          dairyfree: true,
+          vegetarian: false,
+          vegan: false,
+          lowcarb: true
+      },
+      cuisine: {
+          italian: false,
+          french: false,
+          ukrainian: "Українська",
+          japanese: false,
+          chinese: false,
+          indian: false,
+          mexican: false
+      },
+    },
     nutrition: {
       calories: 180,
       protein: 6,
@@ -163,7 +190,16 @@ const recipes = [
       "Додайте майонез і перемішайте.",
       "Приправте за смаком і подавайте."
     ],
-    authorId: "user2",
+    user: [
+      {
+      id: 102,
+      name: "Андрій Петров",
+      bio: "Традиційні рецепти з душею. Знаю всі секрети ідеального борщу.",
+      followers: 530,
+      following: 250,
+      recipesCount: 45,
+      profilePhoto: "/images/user2.jpg",}
+    ]
   },
   {
     id: "recipe5",
@@ -202,7 +238,17 @@ const recipes = [
       "Додайте майонез і перемішайте.",
       "Приправте за смаком і подавайте."
     ],
-    authorId: "user3",
+    user: [
+      {
+        id: 101,
+        name: "Diana Nelson",
+        profilePhoto: "/images/user101.jpg",
+        bio: "Люблю готувати здорову їжу та експериментувати з інгредієнтами.",
+        followers: 245,
+        following: 180,
+        recipesCount: 30,
+      },
+    ]  
   },
   {
     id: "recipe6",
@@ -241,7 +287,17 @@ const recipes = [
       "Додайте майонез і перемішайте.",
       "Приправте за смаком і подавайте."
     ],
-    authorId: "user3",
+    user: [
+      {
+        id: 101,
+        name: "Diana Nelson",
+        profilePhoto: "/images/user101.jpg",
+        bio: "Люблю готувати здорову їжу та експериментувати з інгредієнтами.",
+        followers: 245,
+        following: 180,
+        recipesCount: 30,
+      },
+    ]
   },
   {
     id: "recipe7",
@@ -280,7 +336,16 @@ const recipes = [
       "Додайте майонез і перемішайте.",
       "Приправте за смаком і подавайте."
     ],
-    authorId: "user1",
+    user: [
+      {
+      id: 102,
+      name: "Андрій Петров",
+      bio: "Традиційні рецепти з душею. Знаю всі секрети ідеального борщу.",
+      followers: 530,
+      following: 250,
+      recipesCount: 45,
+      profilePhoto: "/images/user2.jpg",}
+    ]
   },
   {
     id: "recipe8",
@@ -319,7 +384,16 @@ const recipes = [
       "Додайте майонез і перемішайте.",
       "Приправте за смаком і подавайте."
     ],
-    authorId: "user2",
+    user: [
+      {
+      id: 102,
+      name: "Андрій Петров",
+      bio: "Традиційні рецепти з душею. Знаю всі секрети ідеального борщу.",
+      followers: 530,
+      following: 250,
+      recipesCount: 45,
+      profilePhoto: "/images/user2.jpg",}
+    ]
   },
   {
     id: "recipe9",
@@ -358,7 +432,17 @@ const recipes = [
       "Додайте майонез і перемішайте.",
       "Приправте за смаком і подавайте."
     ], 
-    authorId: "user3",
+    user: [
+      {
+        id: 103,
+        name: "Марія Коваленко",
+        profilePhoto: "/images/user103.jpg",
+        bio: "Подорожую світом через кулінарію. Особливий акцент на азійській кухні.",
+        followers: 320,
+        following: 200,
+        recipesCount: 35,
+    }
+  ]
   },
   {
     id: "recipe10",
@@ -397,7 +481,17 @@ const recipes = [
       "Додайте майонез і перемішайте.",
       "Приправте за смаком і подавайте."
     ],
-    authorId: "user3",
+    user: [
+      {
+        id: 103,
+        name: "Марія Коваленко",
+        profilePhoto: "/images/user103.jpg",
+        bio: "Подорожую світом через кулінарію. Особливий акцент на азійській кухні.",
+        followers: 320,
+        following: 200,
+        recipesCount: 35,
+    }
+  ]
   },
   {
     id: "recipe11",
@@ -436,7 +530,17 @@ const recipes = [
       "Додайте майонез і перемішайте.",
       "Приправте за смаком і подавайте."
     ],
-    authorId: "user3",
+    user: [
+      {
+        id: 103,
+        name: "Марія Коваленко",
+        profilePhoto: "/images/user103.jpg",
+        bio: "Подорожую світом через кулінарію. Особливий акцент на азійській кухні.",
+        followers: 320,
+        following: 200,
+        recipesCount: 35,
+    }
+  ]
   },
   {
     id: "recipe12",
@@ -463,6 +567,17 @@ const recipes = [
           mexican: false
       }
     },
+    user: [
+      {
+        id: 101,
+        name: "Diana Nelson",
+        profilePhoto: "/images/user101.jpg",
+        bio: "Люблю готувати здорову їжу та експериментувати з інгредієнтами.",
+        followers: 245,
+        following: 180,
+        recipesCount: 30,
+      },
+    ]
   },
   {
     id: "recipe13",
@@ -489,7 +604,17 @@ const recipes = [
           mexican: false
       }
     },
-    authorId: "user3",
+    user: [
+      {
+        id: 101,
+        name: "Diana Nelson",
+        profilePhoto: "/images/user101.jpg",
+        bio: "Люблю готувати здорову їжу та експериментувати з інгредієнтами.",
+        followers: 245,
+        following: 180,
+        recipesCount: 30,
+      },
+    ]
   },
   {
     id: "recipe14",
@@ -516,7 +641,17 @@ const recipes = [
           mexican: false
       }
     },
-    authorId: "user3",
+    user: [
+      {
+        id: 101,
+        name: "Diana Nelson",
+        profilePhoto: "/images/user101.jpg",
+        bio: "Люблю готувати здорову їжу та експериментувати з інгредієнтами.",
+        followers: 245,
+        following: 180,
+        recipesCount: 30,
+      },
+    ]
   },
   {
     id: "recipe15",
@@ -543,7 +678,17 @@ const recipes = [
           mexican: false
       }
     },
-    authorId: "user3",
+    user: [
+      {
+        id: 101,
+        name: "Diana Nelson",
+        profilePhoto: "/images/user101.jpg",
+        bio: "Люблю готувати здорову їжу та експериментувати з інгредієнтами.",
+        followers: 245,
+        following: 180,
+        recipesCount: 30,
+      },
+    ]
   }
 ];
 

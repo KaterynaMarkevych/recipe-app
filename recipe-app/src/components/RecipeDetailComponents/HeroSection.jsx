@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import 'primeicons/primeicons.css';
 import userphoto from '../../assets/Ellipse.svg';
 import ShoppingListModal from './ShoppingListModal';
+import { useNavigate } from "react-router-dom";
 
 const HeroContainer = styled.div`
     display: flex;    
@@ -235,12 +236,13 @@ const UserContainer = styled.div`
     margin-top: 20px;
     width: 310px;
     height: 120px;
-    padding: 0px;
+    padding: 40px;
     cursor: pointer;
 `;
 const UserPhoto = styled.img`
     width: auto; 
     height: auto;
+    border-radius: 50%;
 `;
 const UserName = styled.p`
     color: #000;
@@ -288,6 +290,14 @@ const HeroSection = ({ recipe }) => {
     const handleCloseModal = () => {
         setIsModalOpen(false);
     };
+    
+    const navigate = useNavigate();
+
+    const handleUserClick = () => {
+        if (recipe.user && recipe.user[0] && recipe.user[0].id) {
+            navigate(`/user/${recipe.user[0].id}`);
+        }
+    };  
     return (
     <>
     <HeroContainer>
@@ -302,9 +312,9 @@ const HeroSection = ({ recipe }) => {
       <RecipeInfo>
             <ImageWrapper>
                 <Image src={recipe.image} alt={recipe.name} />
-                <UserContainer>
-                    <UserPhoto src={userphoto} alt='user'/>
-                    <UserName>Diana Nelson</UserName>
+                <UserContainer onClick={handleUserClick}>
+                    <UserPhoto src={recipe.user[0]?.profilePhoto} alt={`${recipe.user[0]?.name}'s profile`} />
+                    <UserName>{recipe.user[0]?.name}</UserName>
                 </UserContainer>
             </ImageWrapper>
             <Wrapper>
