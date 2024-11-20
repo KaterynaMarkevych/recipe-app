@@ -89,7 +89,6 @@ const ImageWrapper = styled.div`
     width: 100%;  
     max-width: 1000px; 
     height: auto;
-    margin-right: -20px; 
 `;
 const DescriptionWrapper = styled.div`
   display: flex;
@@ -232,25 +231,25 @@ const Icon = styled.i`
 `;
 const UserContainer = styled.div`
     display: flex;
-    align-items: left;
+    align-items: center;
+    justify-content: flex-start;
     margin-top: 20px;
-    width: 310px;
+    width: auto;
+    padding: 40px; 
     height: 120px;
-    padding: 40px;
     cursor: pointer;
 `;
 const UserPhoto = styled.img`
-    width: auto; 
-    height: auto;
+    width: 100px; /* Регульований розмір фото */
+    height: 100px;
     border-radius: 50%;
 `;
 const UserName = styled.p`
     color: #000;
     font-size: 24px;
-    font-style: normal;
     font-weight: 400;
-    line-height: 40px;
-    width: 100%;
+    line-height: 1.2; /* Трохи щільніше міжрядковий інтервал */
+    margin-left: 10px; 
 `;
 const Wrapper = styled.div`
     display: flex; 
@@ -279,7 +278,7 @@ const HeroSection = ({ recipe }) => {
             .join(', ');
 
         // Форматування для відображення
-        return `${cuisineName ? cuisineName : 'Невідома кухня'}${dietOptions ? ` кухня , ${dietOptions}` : ''}`;
+        return `${cuisineName ? cuisineName : 'Невідома'}${dietOptions ? ` кухня , ${dietOptions}` : ''}`;
     };
     const [isModalOpen, setIsModalOpen] = useState(false);
 

@@ -124,7 +124,7 @@ const NutritionListItem = styled.li`
 const formatIngredients = (ingredients) => {
     return ingredients.map((ingredient, index) => {
         // Відокремлюємо кількість, одиницю вимірювання і сам інгредієнт
-        const matches = ingredient.match(/(\d+(\.\d+)?\s*(шт\.?|г|кг|л|мл|ст\.л|ч\.л|додати|паст[аи]|см\.|капсула|таблетка|упаковка|щіпка)?)\s*(.*)/i);
+        const matches = ingredient.match(/(\d+(\.\d+)?\s*(шт\.?|г|кг|л|мл|ст\.л|ч\.л|додати|паст[аи]|см\.|капсула|таблетка|упаковка|щіпка|банка|пучок|-|зубчик[аи])?)\s*(.*)/i);
         if (matches) {
             // Повертаємо відформатований інгредієнт
             return (

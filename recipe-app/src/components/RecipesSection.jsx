@@ -3,6 +3,11 @@ import styled from "styled-components";
 import mockRecipes from "../data/mockRecipes";
 import RecipeCard from "./RecipeCard";
 
+const GridWrapper = styled.div`
+  overflow: hidden;
+  max-height: ${(props) => (props.isCollapsed ? "0px" : "2000px")};
+  transition: max-height 0.50s ease;
+`;
 const Grid = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -56,53 +61,70 @@ const LoadMore = styled.button`
 const RecipesSection = () => {
   const [recipes, setRecipes] = useState([]);
   const [loadCount, setLoadCount] = useState(0);
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
   const recipesPerLoad = 3;
 
-  // Використовуємо useEffect для завантаження рецептів
+  // Завантажуємо початкові рецепти
   useEffect(() => {
-    const loadRecipes = () => {
-      const newRecipes = mockRecipes.slice(
-        0, // Починаємо з 0
-        recipesPerLoad // Завантажуємо перші 3 рецепти
-      );
-      setRecipes(newRecipes); // Завантажуємо перші рецепти при старті
-    };
-    
-    loadRecipes(); // Завантажуємо рецепти при першому рендері
+    const initialRecipes = mockRecipes.slice(0, recipesPerLoad);
+    setRecipes(initialRecipes);
   }, []);
 
+  // Завантаження додаткових рецептів при зміні loadCount
   useEffect(() => {
-    const loadMoreRecipes = () => {
-      const newRecipes = mockRecipes.slice(
-        (loadCount + 1) * recipesPerLoad, // Додаємо нові рецепти після перших 3
-        (loadCount + 2) * recipesPerLoad
-      );
-      setRecipes((prevRecipes) => [...prevRecipes, ...newRecipes]); // Додаємо нові рецепти до попередніх
-    };
-
     if (loadCount > 0) {
-      loadMoreRecipes();
+      const newRecipes = mockRecipes.slice(
+        loadCount * recipesPerLoad,
+        (loadCount + 1) * recipesPerLoad
+      );
+      setRecipes((prevRecipes) => [...prevRecipes, ...newRecipes]);
     }
   }, [loadCount]);
 
   const handleLoadMore = () => {
-    setLoadCount((prevCount) => prevCount + 1); // Збільшуємо loadCount при натисканні
+    if (recipes.length < mockRecipes.length) {
+      setLoadCount((prevCount) => prevCount + 1);
+      setIsCollapsed(false); // Розгорнути блок, якщо він був згорнутий
+    }
+  };
+
+  const handleCollapse = () => {
+    setIsCollapsed(true);
+    setTimeout(() => {
+      setRecipes(mockRecipes.slice(0, recipesPerLoad)); // Залишити лише початкові рецепти після анімації
+      setLoadCount(0);
+      setIsCollapsed(false);
+    }, 100); // Затримка для завершення анімації
+  };
+
+  const handleShowAll = () => {
+    // Перехід на сторінку з усіма рецептами
+    window.location.href = "/popular-recipes";
   };
 
   return (
     <>
       <PopularRecipes>Найпопулярніші рецепти:</PopularRecipes>
+      <GridWrapper isCollapsed={isCollapsed}>
       <Grid>
         {recipes.map((recipe) => (
           <RecipeCard key={recipe.id} recipe={recipe} />
         ))}
       </Grid>
-      {recipes.length < mockRecipes.length && ( // Перевіряємо, чи є ще рецепти для завантаження
-        <LoadMoreWrapper>
+      </GridWrapper>
+      <LoadMoreWrapper>
+        {loadCount < 3 && recipes.length < mockRecipes.length ? (
           <LoadMore onClick={handleLoadMore}>Показати ще рецепти</LoadMore>
-        </LoadMoreWrapper>
-      )}
+        ) : (
+          <LoadMore onClick={handleShowAll}>Показати більше</LoadMore>
+        )}
+        {loadCount > 0 && (
+          <LoadMore onClick={handleCollapse}>
+            Згорнути все
+          </LoadMore>
+        )}
+      </LoadMoreWrapper>
     </>
   );
 };

@@ -159,7 +159,7 @@ const UserPage = () => {
                     </Stats>
                     <PublishStat>
                         <StatItem>
-                            <Span>{user.recipesCount || 0}</Span> опублікованих рецептів
+                            <Span>{recipes.filter((recipe) => recipe.user[0].id === Number(userId)).length}</Span> опублікованих рецептів
                         </StatItem>
                     </PublishStat>  
                 </StatsContainer>

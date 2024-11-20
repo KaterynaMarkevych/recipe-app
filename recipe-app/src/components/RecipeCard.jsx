@@ -42,7 +42,8 @@ const Ingredients = styled.p`
     font-weight: 400;
     line-height: normal;
     text-align: left;  
-    margin-left: 20px; 
+    margin-left: 10px; 
+    padding: 10px;
 `;
 const Stars = styled.div`
   color: #2B3A39;
@@ -67,7 +68,7 @@ const RecipeCard = ({ recipe }) => {
       
       const formatIngredients = (ingredients) => {
         return ingredients.slice(0, 6).map((ingredient) =>
-          ingredient.replace(/^\d*\s*(шт\.?|г|кг|л|мл|ст\.л|ч\.л|додати|паст[аи]|см\.|капсула|таблетка|упаковка|щіпка)?\s*/i, "").trim()
+          ingredient.replace(/^\d*\s*(шт\.?|г|кг|л|мл|ст\.л.|ч\.л.|додати|паст[аи]|см\.|капсула|таблетка|упаковка|щіпка|банка|пучок|-|зубчик[аи])?\s*/i, "").trim()
         ).join(", ");
     };
     return (

@@ -68,6 +68,7 @@ export const RecipeCardTitle = styled.h3`
     font-style: normal;
     font-weight: 500;
     margin-left: 15px;
+    line-height: 20px;
 `;
 export const ImageCard =styled.img`
     width: 200px;
@@ -85,7 +86,6 @@ export const DescriptionCard = styled.p`
     font-size: 15px;
     font-style: normal;
     font-weight: 400;
-    line-height: normal;
     text-align: left;  
     margin-left: 15px; 
 `;

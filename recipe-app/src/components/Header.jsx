@@ -390,7 +390,7 @@ const Header = () => {
     return (
       <>
         <HeaderContainer scrolled={scrolled}>
-        <Logo src={logo} alt="EasyIngrecipes" onClick={() => window.location.href = '/home'}  scrolled={scrolled}/>
+        <Logo src={logo} alt="EasyIngrecipes" onClick={() => window.location.href = '/'}  scrolled={scrolled}/>
         <SearchField placeholder="Пошук рецепту" />
         <SearchIcon className="pi pi-search" />
         <BurgerMenu onClick={() => setMenuOpen(!menuOpen)} className="pi pi-bars" />
@@ -411,7 +411,7 @@ const Header = () => {
                 <Link href="/profile">Профіль</Link>
               </ListIteam>
               <ListIteam>
-                <Link href="/about">Про нас</Link>
+                <Link  href="/#about-us">Про нас</Link>
               </ListIteam>
             </List>
           </Navigation>

@@ -93,6 +93,9 @@ const NameInput = styled.input`
         border-color: inherit; 
     }
 `;
+const DescriptionInput = styled(NameInput)`
+    margin-top: 40px;
+`;
 const IngredientsContainer = styled.div`
     display: flex;
     justify-content: flex-start; 
@@ -368,7 +371,9 @@ const AddRecipePage = () => {
             <Icon className="pi pi-camera" />
             <Span>Завантажте фото </Span>
         </PhotoContainer>
+
         <NameInput placeholder="Назва"/>
+        <DescriptionInput placeholder="Додайте короткий опис"/>
 
         <IngredientsContainer>
           <IngredientsTitle>Інгредієнти</IngredientsTitle>
