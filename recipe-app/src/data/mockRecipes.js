@@ -17,7 +17,7 @@ import userphoto102 from '../assets/user_picture.jpg';
 import userphoto103 from '../assets/user103.jpg'
 const recipes = [
   {
-    id: "recipe1",
+    id: 'recipe1',
     name: 'Буряковий борщ',
     image: image1,
     ingredients: ['2шт буряк', '5шт картопля', '1 морква', '1 цибуля', '1 куряче філе','30г томатної пасти', '2.5л води','зелень'],

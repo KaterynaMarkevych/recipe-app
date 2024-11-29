@@ -391,7 +391,7 @@ const Header = () => {
       <>
         <HeaderContainer scrolled={scrolled}>
         <Logo src={logo} alt="EasyIngrecipes" onClick={() => window.location.href = '/'}  scrolled={scrolled}/>
-        <SearchField placeholder="Пошук рецепту" />
+        <SearchField placeholder='Приклад: "борошно, яйця" або "шарлотка"' />
         <SearchIcon className="pi pi-search" />
         <BurgerMenu onClick={() => setMenuOpen(!menuOpen)} className="pi pi-bars" />
 

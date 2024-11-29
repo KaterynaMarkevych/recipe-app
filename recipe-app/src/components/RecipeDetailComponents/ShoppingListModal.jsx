@@ -131,8 +131,6 @@ const ShoppingListModal = ({ ingredients, onClose }) => {
     const [ingredientList, setIngredientList] = useState(ingredients);
     const [showInput, setShowInput] = useState(false);
 
-    
-
     // Функція для додавання інгредієнта
     const handleAddIngredient = () => {
         if (newIngredient.trim()) {
@@ -169,7 +167,7 @@ const ShoppingListModal = ({ ingredients, onClose }) => {
         <>
         <ModalOverlay>
             <ModalContent>
-                <CloseIcon onClick={onClose} className='pi pi-times'/>
+                <CloseIcon role="button" aria-label="close" onClick={onClose} className='pi pi-times'/>
                 <ShoppingListTitle>Список покупок</ShoppingListTitle>
                 <ShoppingList>
                 {ingredientList.map((ingredient, index) => (

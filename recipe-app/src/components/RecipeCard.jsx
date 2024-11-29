@@ -63,6 +63,7 @@ const RecipeCard = ({ recipe }) => {
       const navigate = useNavigate();
 
       const handleClick = () => {
+        console.log(`Navigating to /recipe/${recipe.id}`);
         navigate(`/recipe/${recipe.id}`);
       };
       
@@ -74,10 +75,10 @@ const RecipeCard = ({ recipe }) => {
     return (
     <>
         <Card onClick={handleClick}>
-            <Image src={recipe.image} alt={recipe.title}/>
+            <Image src={recipe.image} alt={recipe.name}/>
             <Title> {recipe.name}</Title>
             <Ingredients>{formatIngredients(recipe.ingredients)}</Ingredients>
-            <Stars>{renderStars(recipe.rating)}</Stars>
+            <Stars data-testid="recipe-rating">{renderStars(recipe.rating)}</Stars>
         </Card>
     </>
     );
