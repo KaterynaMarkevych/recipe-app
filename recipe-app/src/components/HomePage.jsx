@@ -4,6 +4,8 @@ import HeroSection from "./HeroSection";
 import AboutUs from "./AboutUs";
 import RecipeContainerComponent from "./RecipeContainer";
 import Footer from "./Footer";
+import FooterMobile from "./FooterMobile";
+
 
 const HomePage = () => {
     return(
@@ -13,6 +15,7 @@ const HomePage = () => {
         <RecipeContainerComponent/>
         <AboutUs/>
         <Footer/>
+        <FooterMobile/>
         </>
     );
 }

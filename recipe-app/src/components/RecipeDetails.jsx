@@ -10,6 +10,7 @@ import InfoContainer from './RecipeDetailComponents/InfoContainer';
 import Instructions from './RecipeDetailComponents/Instructions';
 import PhotoSection from './RecipeDetailComponents/PhotoSection';
 import CommentsSection from './RecipeDetailComponents/CommentsSection';
+import FooterMobile from './FooterMobile';
 
 const DetailContainer = styled.div`
     width: 100%;
@@ -19,6 +20,9 @@ const DetailContainer = styled.div`
     flex-direction: column; 
     justify-content: center; 
     align-items: center;
+    @media (max-width: 768px){
+    max-width: 390px;
+    }
 `;
 
 const RecipeDetails = () => {
@@ -52,6 +56,7 @@ const RecipeDetails = () => {
       <CommentsSection/>
     </DetailContainer>
     <Footer/>
+    <FooterMobile/>
     </>
    ); 
 };

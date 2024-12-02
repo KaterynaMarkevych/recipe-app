@@ -6,7 +6,10 @@ import MobileLogInForm from './MobileLogInForm';
 import RegistrationForm from './RegistrationForm';
 import { useNavigate } from 'react-router-dom';
 
-
+const HeaderWrapper = styled.div`
+  display: flex;
+  text-align: center;
+`;
 const HeaderContainer = styled.header`
     display: flex;
     text-align: center;
@@ -21,6 +24,10 @@ const HeaderContainer = styled.header`
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     cursor: pointer;
     z-index: 3;
+     @media (max-width: 768px) {
+     width: 100%;
+     height: 160px;
+     }
 `;
 const Logo = styled.img`
   width: 124px;
@@ -43,7 +50,7 @@ const SearchField = styled.input`
   position:fixed;
   top:30px;
   left:368px;
-  padding-left: 30px; 
+  padding: 0px 40px 0px 30px;  
    &::placeholder {
     color: #000;
     font-family: 'Montserrat', sans-serif;
@@ -70,7 +77,7 @@ const SearchIcon = styled.i`
   color: #000;
   font-size: 18px; 
   @media (max-width: 768px) {
-  left: 268px;
+  left: 320px;
   top: 130px;
   }
 `;
@@ -82,19 +89,17 @@ const Navigation = styled.nav`
     display: flex;
     align-items: center;
     justify-content: center;
-  
   @media (max-width: 768px) {
     display: ${props => (props.showMenu ? 'flex' : 'none')};
     flex-direction: column;
     align-items: left;
     background: #F7FBFC;
     width: 100%;
-    position: absolute;
+    position: fixed;
     top: 120px;
-    right: 0.1%;
+    left: 0px;
     padding-top: 50px;
     z-index: 3;
-    
   }
 `;
 const List = styled.ul`
@@ -103,14 +108,15 @@ const List = styled.ul`
   display: ${props => (props.scrolled ? "none" : "flex")};
   @media (max-width: 768px) {
     flex-direction: column;
-    align-items: flex-start; 
-    padding-left: 50px; 
+    align-items: flex-start;
+    z-index: 9;
   }
 `;
 const ListIteam = styled.li`
   margin: 0 52px;
   @media (max-width: 768px) {
     margin: 10px 0;
+    align-items: left;
   }
 `;
 const Link = styled.a`
@@ -150,7 +156,7 @@ const LogInButton = styled.button`
   }
     @media (max-width: 768px) {
     top: 30px;
-    left: 250px;
+    left: 330px;
   }
 `;
 const AddRecipeButton = styled.button`
@@ -185,7 +191,7 @@ const BurgerMenu = styled.div`
     display: block;
     position: absolute;
     top: 132px;
-    right: 20px;
+    right: 100px;
     font-size: 24px;
     cursor: pointer;
     color: #000;
@@ -203,7 +209,7 @@ const CloseIcon = styled.i`
   }
 `;
 const Overlay = styled.div`
-  display: ${props => (props.show ? 'block' : 'none')};
+ display: ${props => (props.show ? 'block' : 'none')};
   position: fixed;
   top: 0;
   left: 0;
@@ -211,7 +217,7 @@ const Overlay = styled.div`
   height: 100%;
   background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(5px);
-  z-inex: 10;
+  z-index: 1;
 `;
 const LoginForm = styled.div`
   display: ${props => (props.show ? 'flex' : 'none')};
@@ -350,17 +356,7 @@ const CloseFormIcon = styled.i`
   color: #A6A4A4;
   cursor: pointer;
 `;
-const OverlayForForm = styled.div`
-  display: ${props => (props.show ? 'block' : 'none')};
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(5px);
-  z-index: 7;
-`;
+const OverlayForForm = styled(Overlay)``;
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -389,9 +385,10 @@ const Header = () => {
     };
     return (
       <>
+      <HeaderWrapper>
         <HeaderContainer scrolled={scrolled}>
         <Logo src={logo} alt="EasyIngrecipes" onClick={() => window.location.href = '/'}  scrolled={scrolled}/>
-        <SearchField placeholder='Приклад: "борошно, яйця" або "шарлотка"' />
+        <SearchField placeholder='"борошно, яйця" або "шарлотка"' />
         <SearchIcon className="pi pi-search" />
         <BurgerMenu onClick={() => setMenuOpen(!menuOpen)} className="pi pi-bars" />
 
@@ -446,6 +443,7 @@ const Header = () => {
 
         <Overlay show={menuOpen} onClick={() => setMenuOpen(false)} />
         <OverlayForForm show={showLoginForm || showRegistrationForm} onClick={() => {setShowLoginForm(false);setShowRegistrationForm(false);}} />
+      </HeaderWrapper>
     </>
     );
   }

@@ -17,6 +17,9 @@ export const TiteContainer = styled.div`
     justify-content: flex-start;
     text-align: left;
     width: 100%;
+    @media (max-width: 768px){
+        justify-content: center;
+    }
 `;
 export const RecipesTitle = styled.h2`
     color: #2B3A39;
@@ -25,16 +28,26 @@ export const RecipesTitle = styled.h2`
     font-weight: 500;
     line-height: 40px;
     text-align: left;
+    @media (max-width: 768px){
+        font-size: 24px;
+    }
 `;
 export const Icon = styled.i`
     font-size: 28px;
     color: #A6A4A4;
     margin: 0;
+    @media (max-width: 768px){
+        font-size: 20px;
+        margin: 10px;
+    }
 `;
 export const TitleSpan = styled.span`
     color: #535D45;
     font-weight: 400;
     font-size: 28px;
+    @media (max-width: 768px){
+        font-size: 20px;
+    }
 `;
 export const RecipeContainer = styled.div`
     display: flex;
@@ -49,6 +62,9 @@ export const Grid = styled.div`
     width: 100%;
     max-width: 12240px;
     margin-left: 25px;
+    @media (max-width: 768px){
+        justify-content: center;
+    }
 `;
 export const Card = styled.div`
     width: 230px;
@@ -93,6 +109,9 @@ export const LoadMoreWrapper = styled.div`
     display: flex;
     justify-content: flex-start;
     width: 100%;
+    @media (max-width: 768px){
+            justify-content: center;
+        }
 `;
 export const LoadMore = styled.button`
     color: #2B3A39;
@@ -115,4 +134,7 @@ export const LoadMore = styled.button`
         border: none;
         color: #535D45;
     }
+        @media (max-width: 768px){
+            font-size: 20px;
+        }
     `;

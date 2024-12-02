@@ -7,6 +7,10 @@ const Wrapper = styled.div`
   align-items: flex-start;
   width: 1220px;
   margin-top: 40px;
+  @media (max-width: 768px){
+  width: 300px;
+  margin-top: 20px;
+  }
 `;
 
 const Container = styled.div`
@@ -20,12 +24,18 @@ const Title = styled.h3`
   font-weight: 500;
   line-height: 30px;
   margin: 0;
+  @media (max-width: 768px){
+  font-size: 24px;
+  }
 `;
 
 const InstructionList = styled.ol`
   list-style-type: decimal;
   text-align: left;
   padding: 10px;
+  @media (max-width: 768px){
+  padding-left: 20px;
+  }
 `;
 
 const InstructionListItem = styled.li`
@@ -35,6 +45,9 @@ const InstructionListItem = styled.li`
   font-weight: 400;
   line-height: 30px;
   margin-bottom: 20px;
+  @media (max-width: 768px){
+  font-size: 18px;
+  }
 `;
 const Line = styled.line`
     display: block;  
@@ -42,6 +55,10 @@ const Line = styled.line`
     height: 0.5px;
     background:  #ccc;
     margin: 20px 0 20px 0;
+    @media (max-width: 768px){
+    width: 300px;
+    margin: 10px 0 10px 0;
+    }
 `;
 
 const Instructions = ({ instructions }) => {

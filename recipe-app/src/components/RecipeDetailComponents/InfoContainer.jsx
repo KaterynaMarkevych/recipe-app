@@ -9,16 +9,28 @@ const Wrapper = styled.div`
     gap: 20px;
     width: 1220px;
     padding: 0;
+    @media (max-width: 768px){
+        width: 300px;
+        flex-direction: column;
+        align-items: center;
+        gap: 0px;
+    }
 `;
 const Container = styled.div`
   flex: 1;
   width: 610px;
   text-align: left;
+  @media (max-width: 768px){
+        width: 300px;
+    }
 `;
 const IngredientsContainer = styled.div`
     text-align: left;
     flex: 1;
     width: 600px;
+    @media (max-width: 768px){
+        width: 300px;
+    }
 `;
 const Line = styled.line`
     display: block;  
@@ -26,6 +38,10 @@ const Line = styled.line`
     height: 0.5px;
     background:  #ccc;
     margin-top: 40px;
+    @media (max-width: 768px){
+        width: 330px;
+        margin-top: 40px;
+    }
 `;
 const Title = styled.h3`
     color: #000;
@@ -33,6 +49,9 @@ const Title = styled.h3`
     font-style: normal;
     font-weight: 500;
     line-height: 30px;
+    @media (max-width: 768px){
+        font-size: 24px;
+    }
 `;
 const IngridientList = styled.ul`
     list-style-type: none;
@@ -46,6 +65,9 @@ const IngridientListItem = styled.li`
     font-weight: 400;
     line-height: 35px;
     margin-bottom: 5px;
+    @media (max-width: 768px){
+        font-size: 20px;
+    }
 `;
 const Quantity = styled.span`
     font-weight: 500;
@@ -57,6 +79,9 @@ const ListTitle = styled.h4`
     font-style: normal;
     font-weight: 500;
     line-height: 40px;
+    @media (max-width: 768px){
+        font-size: 20px;
+    }
 `;
 const Info = styled.p`
     color: #2B3A39;
@@ -64,6 +89,9 @@ const Info = styled.p`
     font-style: normal;
     font-weight: 400;
     line-height: 30px;
+    @media (max-width: 768px){
+        font-size: 20px;
+    }
 `;
 const ShopingListButton = styled.button`
     width: 240px;
@@ -86,6 +114,11 @@ const ShopingListButton = styled.button`
     &:active {
         border: none; 
     }
+        @media (max-width: 768px){
+        font-size: 18px;
+        width: 220px;
+        height: 50px;
+        }
 `;
 const NutritionContainer = styled.div`
     width: 550px;
@@ -94,6 +127,12 @@ const NutritionContainer = styled.div`
     border: 1px solid #000;
     background: #D6E6F2;
     padding: 10px;
+    @media (max-width: 768px){
+        font-size: 18px;
+        width: 330px;
+        height: 214px;
+        padding: 5px;
+    }
 `;
 const NutritionTitle = styled.h4`
     color: #2B3A39;
@@ -102,6 +141,10 @@ const NutritionTitle = styled.h4`
     font-weight: 500;
     line-height: 40px;
     margin-left: 20px;
+    @media (max-width: 768px){
+    font-size: 20px;
+    line-height: 20px;
+    }
 `;
 const Span = styled.span`
     font-weight: 400;
@@ -112,6 +155,10 @@ const NutritionList = styled.ul`
     display: flex; 
     justify-content: flex-start; 
     padding: 0;
+    @media (max-width: 768px) {
+    flex-wrap: wrap; 
+    justify-content: center;
+    }
 `;
 const NutritionListItem = styled.li`
     margin: 22px;
@@ -120,6 +167,11 @@ const NutritionListItem = styled.li`
     font-style: normal;
     font-weight: 500;
     line-height: 40px;
+    @media (max-width: 768px){
+    font-size: 20px;
+    line-height: 20px;
+    margin: 20px;
+    }
 `;
 const formatIngredients = (ingredients) => {
     return ingredients.map((ingredient, index) => {

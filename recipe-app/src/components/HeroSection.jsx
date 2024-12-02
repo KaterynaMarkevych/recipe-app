@@ -16,7 +16,8 @@ const HeroSectionContainer = styled.div`
     margin-top: 250px;
     padding: 0 20px;
     @media (max-width: 768px){
-        width: 340px;
+        max-width: 340px;
+        margin-top: 200px;
     }
 `;
 const HeroHeader = styled.h2`
@@ -40,7 +41,6 @@ const BackgroundHero = styled.div`
     width: 100%;
     height: 714px;
     background: #8CAABE;
-    position: relative;
     @media (max-width: 768px){
         height: 224px;
     }
@@ -64,21 +64,10 @@ const HeroText = styled.p`
         display: none;
     }
 `;
-const HeroText2 = styled.p`
-    display: flex;
-    justify-content: center;
-    width: 352px;
-    color: #2B3A39;
-    text-align: center;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-family: Buenard;
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 40px;
-    position: absolute;
-    top: 524px;
-    right: 15px;
+const HeroText2 = styled(HeroText)`
+    top: 924px;
+    right: 195px;
+    width: 305px;
     @media (max-width: 768px){
         display: none;
     }
@@ -88,7 +77,7 @@ const PhotoContainer = styled.div`
     position: absolute;
     margin: 55px auto; 
     @media (max-width: 768px){
-        margin: auto;
+        margin: 0 auto;
     }
 `;
 const Photo1 = styled.img`
@@ -125,10 +114,8 @@ const Photo4 = styled.img`
     }
 `;
 const MobilePhoto = styled.img`
-    position: absolute;
     width: 296px;
-    top: 20px;
-    left: 20px;
+    padding: 20px;
     @media (min-width: 768px){
         display: none;
     }
@@ -140,7 +127,7 @@ const Line = styled.line`
     background: #A6A4A4;
     margin: 40px auto;
     @media (max-width: 768px){
-        width: 338px;
+        width: 100%
     }
 `;
 const HeroSection = () => {

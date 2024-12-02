@@ -3,9 +3,15 @@ import styled from "styled-components";
 import mockRecipes from "../data/mockRecipes";
 import RecipeCard from "./RecipeCard";
 
+const RecipesSectionWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  width: 100%;
+`;
 const GridWrapper = styled.div`
   overflow: hidden;
-  max-height: ${(props) => (props.isCollapsed ? "0px" : "2000px")};
+  max-height: ${(props) => (props.isCollapsed ? "0px" : "auto")};
   transition: max-height 0.50s ease;
 `;
 const Grid = styled.div`
@@ -14,26 +20,38 @@ const Grid = styled.div`
   gap: 32px;
   width: 890px;
   margin-left: 25px;
+  @media (max-width: 768px) {
+    flex-direction: column; 
+    width: 100%;
+    margin-left: 0;
+    gap: 16px; 
 `;
 const PopularRecipes = styled.h2`
   display: flex;
-  width: 337px;
-  height: 34px;
   flex-direction: column;
-  justify-content: center;
   flex-shrink: 0;
   color: #2B3A39;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
   line-height: 40px;
-  margin: 10px 0px 40px 0;
+  margin: 10px 580px 40px 0;
+  @media (max-width: 768px) {
+    width: 100%;
+    font-size: 20px; 
+    line-height: 20px;
+    margin: 20px 0 20px 0;
+    justify-content: center;
 `;
 const LoadMoreWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
   width: 100%;
   margin-top: 10px;
+  @media (max-width: 768px) {
+    justify-content: center; 
+    margin: 0;
+  }
 `;
 const LoadMore = styled.button`
   color: #2B3A39;
@@ -55,6 +73,10 @@ const LoadMore = styled.button`
   &:active {
     border: none;
     color: #535D45;
+  }
+    @media (max-width: 768px) {
+    font-size: 20px; 
+    width: 100%
   }
 `;
 
@@ -105,6 +127,7 @@ const RecipesSection = () => {
 
   return (
     <>
+    <RecipesSectionWrapper>
       <PopularRecipes>Найпопулярніші рецепти:</PopularRecipes>
       <GridWrapper isCollapsed={isCollapsed}>
       <Grid>
@@ -125,6 +148,7 @@ const RecipesSection = () => {
           </LoadMore>
         )}
       </LoadMoreWrapper>
+    </RecipesSectionWrapper>
     </>
   );
 };

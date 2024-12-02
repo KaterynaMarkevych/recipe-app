@@ -2,6 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import 'primeicons/primeicons.css';
 
+const FooterWrapper = styled.div`
+  display: flex;
+  text-align: center;
+    @media (max-width: 768px) {
+    display: none; 
+    }
+`;
 const FooterContainer = styled.div`
     display: flex;
     text-align: center;
@@ -11,7 +18,6 @@ const FooterContainer = styled.div`
     width: 100%;
     padding: 20px;
     position:absolute;
-    left:opx;
     right:0;
 `;
 const NavigationPart1 = styled.nav`
@@ -83,9 +89,10 @@ const Developer = styled.span`
     line-height: 40px;
     margin-top: 68px;
 `;
-const Footer = () =>{
+const FooterMobile = () =>{
     return(
         <>
+        <FooterWrapper>
         <FooterContainer>
             <CopyRight>@ EasyIngrecipes 2024</CopyRight>
             <Info>
@@ -121,13 +128,14 @@ const Footer = () =>{
                 <Link href="/profile">Профіль</Link>
               </ListIteam>
               <ListIteam>
-                <Link href="/about">Про нас</Link>
+                <Link href="/#about-us">Про нас</Link>
               </ListIteam>
             </List>
           </NavigationPart2>
           <Developer>Дизайн і розробка klift</Developer>
         </FooterContainer>
+        </FooterWrapper>
         </>
     );
 };
-export default Footer;
+export default FooterMobile;

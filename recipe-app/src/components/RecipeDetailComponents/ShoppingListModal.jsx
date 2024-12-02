@@ -24,6 +24,10 @@ const ModalContent = styled.div`
     position: absolute;
     top: 150px;
     border: 1px solid #000;
+    @media (max-width: 768px){
+        top: 240px;
+        width: 360px;
+    }
 `;
 
 const CloseIcon = styled.i`
@@ -32,6 +36,11 @@ const CloseIcon = styled.i`
     right: 80px;
     font-size: 24px;
     cursor: pointer;
+    @media (max-width: 768px){
+        font-size: 20px;
+        top: 50px;
+        right: 40px;
+    }
 `;
 
 const ShoppingListTitle = styled.h2`
@@ -42,6 +51,10 @@ const ShoppingListTitle = styled.h2`
     line-height: normal;
     text-align: left;
     margin-left: 100px;
+    @media (max-width: 768px){
+    font-size: 24px;
+    margin-left: 50px;
+    }
 `;
 
 const ShoppingList = styled.ul`

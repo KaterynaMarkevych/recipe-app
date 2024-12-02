@@ -1,4 +1,3 @@
-// src/components/RecipeDetailComponents/HeroSection.jsx
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import 'primeicons/primeicons.css';
@@ -13,6 +12,9 @@ const HeroContainer = styled.div`
     align-items: center; 
     width:1310px;
     margin-top: 200px;
+    @media (max-width: 768px){
+    max-width: 380px;
+    }
 `;
 const Title = styled.h1`
     color: #2B3A39;
@@ -22,12 +24,16 @@ const Title = styled.h1`
     line-height: 40px; 
     text-align: left; 
     margin: 0;
+    @media (max-width: 768px){
+    font-size: 24px;
+    }
 `;
 const RatingWrapper = styled.div`
     display: flex; 
     flex-direction: column;
     align-items: left; 
     width: 100%;
+    margin-left: 65px;
 `;
 const RatingContainer = styled.div`
     display: flex;
@@ -39,7 +45,10 @@ const Stars = styled.div`
     font-size: 24px;
     text-align: left;
     margin-right: 10px;
-    align-items: left;  
+    align-items: left; 
+    @media (max-width: 768px){
+    font-size: 20px;
+    } 
 `;
 const Rating = styled.p`
     color: #000;
@@ -47,6 +56,9 @@ const Rating = styled.p`
     font-weight: 400;
     line-height: 40px; 
     margin: 0;
+    @media (max-width: 768px){
+    font-size: 20px;
+    } 
 `;
 const RatingButton = styled.button`
     color: #2B3A39;
@@ -71,6 +83,9 @@ const RatingButton = styled.button`
         border: none;
         color: #535D45;
     }
+        @media (max-width: 768px){
+        font-size: 20px;
+        } 
 `;
 const RecipeInfo = styled.div`
     display: flex;
@@ -79,11 +94,20 @@ const RecipeInfo = styled.div`
     width: 1220px;
     background-color: #8CAABE;
     padding: 42px;
+        @media (max-width: 768px){
+        flex-direction: column; 
+        width: 280px;
+        padding: 20px;
+    }
 `;
 const Image = styled.img`      
     width: 668px; 
     height: auto;
     margin-left: -80px;
+    @media (max-width: 768px){
+        width: 253px;
+        margin-left: 0px;
+    }
 `;
 const ImageWrapper = styled.div`
     width: 100%;  
@@ -100,6 +124,10 @@ const DescriptionContainer = styled.div`
     text-align: left;
     padding-bottom: 30px;
     padding-left: 30px;
+    @media (max-width: 768px){
+        padding-left: 20px;
+        max-width: 280px;
+    }
 `;  
 const Description = styled.p`
     color: #2B3A39;
@@ -108,6 +136,10 @@ const Description = styled.p`
     font-weight: 400;
     line-height: 25px;
     margin: 0;
+    @media (max-width: 768px){
+        font-size: 20px;
+        max-width: 280px;
+    }
 `;
 const DescriptionSpan = styled.span`
     color: #000;
@@ -115,6 +147,9 @@ const DescriptionSpan = styled.span`
     font-style: normal;
     font-weight: 400;
     line-height: 25px;
+    @media (max-width: 768px){
+        font-size: 20px;
+    }
 `;
 const Line = styled.line`
     display: block;  
@@ -123,7 +158,8 @@ const Line = styled.line`
     background:  #2B3A39;
     margin: 40px 0 20px 0;
     @media (max-width: 768px){
-        width: 338px;
+        width: 280px;
+        margin: 10px 0 10px 0;
     }
 `;
 const ButtonsWrapper = styled.div`
@@ -154,80 +190,20 @@ const SaveRecipeButton = styled.button`
         border: none;
         color: #535D45;
     }
-`;
-const ShareRecipeButton = styled.button`
-    color: #2B3A39;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    cursor: pointer;
-    border: none;
-    background: none;
-    text-align: left;
-    &:hover {
-        border: none;
-        color: #535D45;
-    }
-    &:focus {
-        outline: none;
-    }
-    &:active {
-        border: none;
-        color: #535D45;
+        @media (max-width: 768px){
+        font-size: 18px;
     }
 `;
-const ShopingListButton = styled.button`
-    color: #2B3A39;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    cursor: pointer;
-    border: none;
-    background: none;
-    margin-rigth: auto;
-    text-align: left;
-    &:hover {
-        border: none;
-        color: #535D45;
-    }
-    &:focus {
-        outline: none;
-    }
-    &:active {
-        border: none;
-        color: #535D45;
-    }
-`;
-const PrintButton = styled.button`
-    color: #2B3A39;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    cursor: pointer;
-    border: none;
-    background: none;
-    margin-rigth: auto;
-    text-align: left;
-    &:hover {
-        border: none;
-        color: #535D45;
-    }
-    &:focus {
-        outline: none;
-    }
-    &:active {
-        border: none;
-        color: #535D45;
-    }
-`;
+const ShareRecipeButton = styled(SaveRecipeButton)``;
+const ShopingListButton = styled(SaveRecipeButton)``;
+const PrintButton = styled(SaveRecipeButton)``;
 const Icon = styled.i`
     font-size: 24px;
     cursor: pointer;
     padding: 10px;
-    
+    @media (max-width: 768px){
+        font-size: 20px;
+    }
 `;
 const UserContainer = styled.div`
     display: flex;
@@ -238,23 +214,38 @@ const UserContainer = styled.div`
     padding: 40px; 
     height: 120px;
     cursor: pointer;
+    @media (max-width: 768px){
+        padding: 20px; 
+        height: 20px;
+    }
 `;
 const UserPhoto = styled.img`
-    width: 100px; /* Регульований розмір фото */
+    width: 100px; 
     height: 100px;
     border-radius: 50%;
+    @media (max-width: 768px){
+        width: 50px; 
+        height: 50px;
+    }
 `;
 const UserName = styled.p`
     color: #000;
     font-size: 24px;
     font-weight: 400;
-    line-height: 1.2; /* Трохи щільніше міжрядковий інтервал */
+    line-height: 1.2; 
     margin-left: 10px; 
+    @media (max-width: 768px){
+    font-size: 20px;
+    }
 `;
 const Wrapper = styled.div`
     display: flex; 
     flex-direction: column; 
     margin-left: 20px;
+    @media (max-width: 768px){
+    margin-left: 0px;
+    margin-top: 20px;
+    }
 `;
 const HeroSection = ({ recipe }) => {
     const renderStars = (rating) => {

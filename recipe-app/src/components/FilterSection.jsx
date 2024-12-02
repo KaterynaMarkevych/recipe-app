@@ -2,6 +2,24 @@ import React from "react";
 import styled from "styled-components";
 import 'primeicons/primeicons.css';
 
+const FilterContainerWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  width: 100%; 
+  padding: 10px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+`;
 const FilterContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -9,6 +27,9 @@ const FilterContainer = styled.div`
   background-color: #f8f8f8;
   border: 1px solid #e0e0e0;
   width: 270px;
+   @media (max-width: 768px) {
+    width: 70%;
+  }
 `;
 const Title = styled.h3`
   font-size: 18px;
@@ -57,9 +78,20 @@ const Select = styled.select`
     border-color: #000;
   }
 `;
-
+const Option = styled.option`
+  background-color: #f8f8f8;
+  color: #2b3a39;
+  font-size: 16px;
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
+  &:hover {
+    background-color: #e0e0e0;
+  }
+`;
 const FilterSection = () => {
   return (
+    <FilterContainerWrapper>
     <FilterContainer>
       <Title>Пошук за інгредієнтами</Title>
       <Label>Показати рецепти з:</Label>
@@ -74,36 +106,37 @@ const FilterSection = () => {
       </InputContainer>
       <Title>Фільтри</Title>
       <Select>
-        <option>Тип страви</option>
-        <option>Сніданок</option>
-        <option>Обід</option>
-        <option>Вечеря</option>
+        <Option>Тип страви</Option>
+        <Option>Сніданок</Option>
+        <Option>Обід</Option>
+        <Option>Вечеря</Option>
       </Select>
       <Select>
-        <option>Складність</option>
-        <option>Легко</option>
-        <option>Середньо</option>
-        <option>Складно</option>
+        <Option>Складність</Option>
+        <Option>Легко</Option>
+        <Option>Середньо</Option>
+        <Option>Складно</Option>
       </Select>
       <Select>
-        <option>Час приготування</option>
-        <option>Менше 30 хв</option>
-        <option>30-60 хв</option>
-        <option>Більше 60 хв</option>
+        <Option>Час приготування</Option>
+        <Option>Менше 30 хв</Option>
+        <Option>30-60 хв</Option>
+        <Option>Більше 60 хв</Option>
       </Select>
       <Select>
-        <option>Дієтичні опції</option>
-        <option>Веганські</option>
-        <option>Вегетаріанські</option>
-        <option>Безглютенові</option>
+        <Option>Дієтичні опції</Option>
+        <Option>Веганські</Option>
+        <Option>Вегетаріанські</Option>
+        <Option>Безглютенові</Option>
       </Select>
       <Select>
-        <option>Калорійність</option>
-        <option>Низька</option>
-        <option>Середня</option>
-        <option>Висока</option>
+        <Option>Калорійність</Option>
+        <Option>Низька</Option>
+        <Option>Середня</Option>
+        <Option>Висока</Option>
       </Select>
     </FilterContainer>
+    </FilterContainerWrapper>
   );
 };
 

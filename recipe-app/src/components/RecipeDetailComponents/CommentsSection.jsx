@@ -7,6 +7,9 @@ const Wrapper = styled.div`
     flex-direction: column;
     align-items: flex-start; 
     width: 1220px;
+    @media (max-width: 768px){
+    width: 330px;
+    }
 `;
 const InputContainer = styled.div`
   display: flex;
@@ -19,6 +22,10 @@ const Title = styled.h2`
     font-style: normal;
     font-weight: 500;
     line-height: 40px; 
+    @media (max-width: 768px){
+    font-size: 24px;
+    line-height: 20px;
+    }
 `;
 const Input = styled.input`
     padding: 8px 60px 8px 8px;  
@@ -31,6 +38,10 @@ const Input = styled.input`
         outline: none;
         border-color: inherit; 
     }
+    @media (max-width: 768px){
+    width: 240px;
+    padding: 8px 60px 8px 8px;
+    }    
 `;
 const Icon = styled.i`
     font-size: 24px;
@@ -38,6 +49,10 @@ const Icon = styled.i`
     position: absolute;
     left: 580px;
     cursor: pointer;
+    @media (max-width: 768px){
+    left: 315px;
+    font-size: 20px;
+    } 
 `;
 const Span = styled.span`
     color: #000;
@@ -47,6 +62,9 @@ const Span = styled.span`
     line-height: 20px; 
     cursor: pointer;
     margin-bottom: 40px;
+    @media (max-width: 768px){
+    margin-bottom: 20px;
+    } 
 `;
 const SpanIcon = styled.i`
     font-size: 18px;
